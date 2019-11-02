@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from '../recipe.model';
+import { Recipe } from '../recipe.model'; //import the model class
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,7 +7,7 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-
+  //holding multiple Objects
   recipes: Recipe[] = [
     new Recipe('Steak', 'Using this recipe you can prepare a delicious steak in less than half an hour of cook time and a prep time',
     'https://www.thespruceeats.com/thmb/hl4lkmdLO7tj1eDCsGbakfk97Co=/3088x2055/filters:fill(auto,1)/marinated-top-round-steak-3060302-hero-02-ed071d5d7e584bea82857112aa734a94.jpg'),
