@@ -1,7 +1,8 @@
 export class Recipe{
-    name: string;
-    description: string;
-    imgPath: string;
+    //A Blueprint
+    public name: string;
+    public description: string;
+    public imgPath: string;
     
     constructor(name: string, desc: string, imagePath:string){
         this.name = name;
