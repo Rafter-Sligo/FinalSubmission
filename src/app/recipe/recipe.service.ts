@@ -1,12 +1,14 @@
 import { Recipe } from './recipe.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
+
+@Injectable()   //getting access to the shopping-List Service
 export class RecipeService{
     recipeSelected = new EventEmitter<Recipe>();
 
     //where we mange our recipes
-
     private recipes: Recipe[] = [
         new Recipe('Steak', 'less than half an hour of cook time and a prep time',
         'https://www.thespruceeats.com/thmb/hl4lkmdLO7tj1eDCsGbakfk97Co=/3088x2055/filters:fill(auto,1)/marinated-top-round-steak-3060302-hero-02-ed071d5d7e584bea82857112aa734a94.jpg', 
@@ -26,9 +28,18 @@ export class RecipeService{
     ) 
 ];
 
+    constructor(private slService: ShoppingListService){
+
+    }
+
     //getting the Recipes that are private
     getRecipe(){
           //Slice returns a new array is an exact copy
         return this.recipes.slice();
+    }
+
+    addIngredientsToShoppingList(ingredientsAdded: ingredient[])
+    {
+        this.slService.addIngredientsFromRecipe(ingredientsAdded);
     }
 }

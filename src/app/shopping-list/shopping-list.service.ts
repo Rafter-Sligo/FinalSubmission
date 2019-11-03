@@ -20,4 +20,16 @@ export class ShoppingListService{
         this.ingredientsChanged.emit(this.ingredients.slice());
     }
 
+    addIngredientsFromRecipe(ingredientsAdded: ingredient[]){
+        // for(let ingredient of ingredientsAdded){
+        //    this.addIngredients(ingredient);
+        //}
+
+        //Push cant handle an Array, It will make it a Single Object and push to a single array
+        // ... == Spread Operator  makes it into a list of single Ingredients
+        this.ingredients.push(...ingredientsAdded);
+        this.ingredientsChanged.emit(this.ingredients.slice())
+    }
+
+
 }
