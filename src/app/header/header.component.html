@@ -1,24 +1,24 @@
-<nav class="navbar navbar-defult">
+<nav class="navbar navbar-defult" >
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
                 <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
             </button>
-                <a routerLink="/" class="navbar-brand">Recipe Book</a>
+                <a routerLink="/" class="navbar-brand">Recipe</a>
         </div>
         
     <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
         <ul class="nav navbar-nav">
-            <li> <a href="#" (click)="onSelect('recipe')"> Recipe </a> </li>
-            <li> <a href="#" (click)="onSelect('shopping-list')"> Shopping List </a> </li>
+            <li routerLinkActive="active"> <a routerLink="/recipes"> MyRecipes </a> </li>
+            <li routerLinkActive="active"> <a routerLink="/shopping-list"> Shopping-list </a> </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" appDropdown> 
-                <a href="#" class="dropdown-toggle" role="button"> Manage <span class="caret"></span> </a>
+                <a  class="dropdown-toggle" role="button" style="cursor: pointer;"> Manage <span class="caret"></span> </a>
                 <ul class="dropdown-menu">
-                    <li> <a href="#">Save Data</a> </li>
-                    <li> <a href="#">Fetch Data</a> </li>
+                    <li> <a         style="cursor: pointer;">Save Data</a> </li>
+                    <li> <a         style="cursor: pointer;">Fetch Data</a> </li>
                 </ul>
             </li>
         </ul>
