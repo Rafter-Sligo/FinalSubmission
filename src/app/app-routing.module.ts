@@ -8,23 +8,22 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 
 //The Routes
-const appRoute: Routes = [
-    //pathMatch will display went the path is empty
-    {path: '',redirectTo: '/recipes', pathMatch: 'full'},
-    {path: 'recipes', component: RecipeComponent, children: [
-        { path: '',component: RecipeStartComponent}, //making it display inside the recipe component
-        { path: 'new', component: RecipeEditComponent},
-        { path: ':id', component: RecipeDetailComponent},
-        { path: ':id/edit', component: RecipeEditComponent}
-    ]},
-    {path: 'shopping-list', component: ShoppingListComponent}
-
-];
-
-@NgModule({
-    imports:[RouterModule.forRoot(appRoute)],
-    exports: [RouterModule]
-})
+const appRoutes: Routes = [
+        //pathMatch will display went the path is empty
+        { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+        { path: 'recipes', component: RecipeComponent, children: [
+          { path: '', component: RecipeStartComponent },
+          { path: 'new', component: RecipeEditComponent },
+          { path: ':id', component: RecipeDetailComponent },
+          { path: ':id/edit', component: RecipeEditComponent },
+        ] },
+        { path: 'shopping-list', component: ShoppingListComponent },
+      ];
+      
+      @NgModule({
+        imports: [RouterModule.forRoot(appRoutes)],
+        exports: [RouterModule]
+      })
 export class AppRoutingModule{
     //This will Bundle all the routing
 

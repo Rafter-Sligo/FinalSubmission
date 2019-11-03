@@ -11,30 +11,31 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeEditComponent implements OnInit {
   id: number;
-  editMode=false;
+  editMode = false;
   recipeForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
-    private recipeService: RecipeService,
-    private router: Router) {
-}
+              private recipeService: RecipeService,
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.route.params
-    .subscribe(
-      (params: Params) =>{
-        this.id = +params['id'];
-        this.editMode = params['id'] != null;
-        console.log(this.editMode); //checking what mode we are in
-      }
-    );
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.editMode = params['id'] != null;
+          this.initForm();
+        }
+      );
   }
 
-  get controls() { // a getter!
-    return (<FormArray>this.recipeForm.get('ingredients')).controls;
-  }
-  
   onSubmit() {
+    // const newRecipe = new Recipe(
+    //   this.recipeForm.value['name'],
+    //   this.recipeForm.value['description'],
+    //   this.recipeForm.value['imagePath'],
+    //   this.recipeForm.value['ingredients']);
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
     } else {
@@ -70,12 +71,12 @@ export class RecipeEditComponent implements OnInit {
     let recipeIngredients = new FormArray([]);
 
     if (this.editMode) {
-      const recipe = this.recipeService.getRecipeId(this.id);
+      const recipe = this.recipeService.getRecipe(this.id);
       recipeName = recipe.name;
-      recipeImagePath = recipe.imgPath;
+      recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
       if (recipe['ingredients']) {
-        for (let ingredient of recipe.ingredient) {
+        for (let ingredient of recipe.ingredients) {
           recipeIngredients.push(
             new FormGroup({
               'name': new FormControl(ingredient.name, Validators.required),
@@ -96,6 +97,5 @@ export class RecipeEditComponent implements OnInit {
       'ingredients': recipeIngredients
     });
   }
-
 
 }
