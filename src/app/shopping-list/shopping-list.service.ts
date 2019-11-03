@@ -1,9 +1,9 @@
 import { ingredient } from '../shared/ingredient.model';
-import { EventEmitter } from '@angular/core';
+import {Subject} from 'rxjs';
 
 export class ShoppingListService{
 
-    ingredientsChanged = new EventEmitter<ingredient[]>();
+    ingredientsChanged = new Subject<ingredient[]>();
 
     private ingredients : ingredient[] = [
         new ingredient('Cut Beef', 200),
@@ -17,7 +17,7 @@ export class ShoppingListService{
     //adding items
     addIngredients(ingredientAdd: ingredient){
         this.ingredients.push(ingredientAdd);
-        this.ingredientsChanged.emit(this.ingredients.slice());
+        this.ingredientsChanged.next(this.ingredients.slice());
     }
 
     addIngredientsFromRecipe(ingredientsAdded: ingredient[]){
@@ -28,7 +28,7 @@ export class ShoppingListService{
         //Push cant handle an Array, It will make it a Single Object and push to a single array
         // ... == Spread Operator  makes it into a list of single Ingredients
         this.ingredients.push(...ingredientsAdded);
-        this.ingredientsChanged.emit(this.ingredients.slice())
+        this.ingredientsChanged.next(this.ingredients.slice())
     }
 
 
