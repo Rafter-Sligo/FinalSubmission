@@ -5,6 +5,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 
 //The Routes
 const appRoute: Routes = [
@@ -12,7 +13,11 @@ const appRoute: Routes = [
     {path: '',redirectTo: '/recipes', pathMatch: 'full'},
     {path: 'recipes', component: RecipeComponent, children: [
         { path: '',component: RecipeStartComponent}, //making it display inside the recipe component
-        { path: ':id', component: RecipeDetailComponent}
+        { path: 'new', component: RecipeEditComponent},
+        { path: ':id', component: RecipeDetailComponent},
+        { path: ':id/edit', component: RecipeEditComponent}
+
+
     ]},
     {path: 'shopping-list', component: ShoppingListComponent}
 
