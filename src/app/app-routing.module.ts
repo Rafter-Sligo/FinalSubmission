@@ -8,22 +8,24 @@ import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.compone
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 import { RegisterComponent } from './register/register.component';
+import { RecipesResolverService } from './recipe/recipes-resolver.service';
+import { AuthComponent } from './auth/auth.component';
 
 //The Routes
 const appRoutes: Routes = [
   //pathMatch will display went the path is empty
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  {
-    path: 'recipes', component: RecipeComponent, children: [
+  { path: 'recipes', component: RecipeComponent, children:
+    [
       { path: '', component: RecipeStartComponent },
       { path: 'new', component: RecipeEditComponent },
-      { path: ':id', component: RecipeDetailComponent },
-      { path: ':id/edit', component: RecipeEditComponent },
-
+      { path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolverService] },
+      { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService] },
     ]
   },
   { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'auth', component: AuthComponent}
 ];
 
 @NgModule({
