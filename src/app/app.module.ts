@@ -21,6 +21,13 @@ import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.compone
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 
+//firebase imports
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+
+
 
 @NgModule({
   declarations: [
@@ -41,7 +48,11 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+
 
   ],
   providers: [ShoppingListService, RecipeService],
