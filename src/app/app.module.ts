@@ -16,7 +16,10 @@ import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.compone
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipe/recipe.service';
 import { RegisterComponent } from './register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthComponent } from './auth/auth.component';
+
 
 
 @NgModule({
@@ -33,7 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
     RecipeStartComponent,
     RecipeEditComponent,
     RegisterComponent,
-    
+    LoadingSpinnerComponent,
+    AuthComponent
+
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ShoppingListService, RecipeService],
-  bootstrap: [AppComponent]
+  providers: [
+    ShoppingListService,
+    RecipeService,
+  ],  bootstrap: [AppComponent]
 })
 export class AppModule { }
