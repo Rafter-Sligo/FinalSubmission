@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthComponent } from './auth/auth.component';
 
 import { AppRoutingModule } from './app-routing.module'; // Added here
 
@@ -21,13 +24,6 @@ import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.compone
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 
-//firebase imports
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { environment } from '../environments/environment';
-
-
 
 @NgModule({
   declarations: [
@@ -41,21 +37,27 @@ import { environment } from '../environments/environment';
     RecipeComponent,
     RecipeEditComponent,
     RegisterComponent,
+    LoadingSpinnerComponent,
+    AuthComponent,
     RecipeStartComponent,
-    ShoppingListComponent,
+    ShoppingListComponent
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    HttpClientModule
 
 
   ],
-  providers: [ShoppingListService, RecipeService],
-  bootstrap: [AppComponent]
+  providers: [
+    ShoppingListService,
+    RecipeService,
+  ],  bootstrap: [AppComponent]
 })
 export class AppModule { }
