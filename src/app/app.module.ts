@@ -37,11 +37,11 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     RecipeComponent,
     RecipeEditComponent,
     RegisterComponent,
-    LoadingSpinnerComponent,
     AuthComponent,
     RecipeStartComponent,
-    ShoppingListComponent
-    
+    ShoppingListComponent,
+    LoadingSpinnerComponent
+
   ],
   imports: [
     BrowserModule,

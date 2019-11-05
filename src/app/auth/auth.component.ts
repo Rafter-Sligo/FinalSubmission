@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 })
 export class AuthComponent {
   isLoginMode = true;
+  isLoading = false;
 
   constructor(private authService: AuthService){
 
@@ -20,11 +21,14 @@ export class AuthComponent {
 
   onSubmit(form: NgForm) {
     if(!form.valid){
-      return;   //incase someone changes browser tools
+      return;   //incase someone changes browser tools to mske button enabled
     }
+
     console.log(form.value);
     const email = form.value.email;
     const password = form.value.password;
+
+    this.isLoading = true
 
     if(this.isLoginMode){
 
@@ -33,10 +37,14 @@ export class AuthComponent {
     {
       this.authService.signUp(email,password).subscribe(resData => {
          console.log(resData);
+         this.isLoading = false;
+
       },
       error =>
         {
           console.log(error)
+          this.isLoading = false;
+
         });
     }
     form.reset();
