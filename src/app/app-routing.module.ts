@@ -13,13 +13,12 @@ const appRoutes: Routes = [
   //pathMatch will display went the path is empty
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  {
-    path: 'recipes', component: RecipeComponent, children: [
+  { path: 'recipes', component: RecipeComponent, children:
+    [
       { path: '', component: RecipeStartComponent },
       { path: 'new', component: RecipeEditComponent },
       { path: ':id', component: RecipeDetailComponent },
       { path: ':id/edit', component: RecipeEditComponent },
-
     ]
   },
   { path: 'shopping-list', component: ShoppingListComponent },
