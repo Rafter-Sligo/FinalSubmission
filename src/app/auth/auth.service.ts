@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, Subject, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
+import { Router } from '@angular/router';
 
 export interface AuthResponseData{
     kind: string;
@@ -19,7 +20,7 @@ export class AuthService{
     //this is like a subject the difference also gives subscribers imitate access to the pervious value
     user = new BehaviorSubject<User>(null);
 
-    constructor(private http: HttpClient){
+    constructor(private http: HttpClient, private router: Router){
 
     }
     //Firebase Auth Rest Api
@@ -65,6 +66,11 @@ export class AuthService{
                 );
         })
         );
+    }
+
+    logout(){
+        this.user.next(null);   //sets the user to Null
+        this.router.navigate(['/auth']);
     }
 
     private handAuthentication(email: string, userId: string, token: string, expiresIn: number){
