@@ -19,6 +19,7 @@ export interface AuthResponseData{
 export class AuthService{
     //this is like a subject the difference also gives subscribers imitate access to the pervious value
     user = new BehaviorSubject<User>(null);
+    private tokenExpirationTimer: any;
 
     constructor(private http: HttpClient, private router: Router){
 
@@ -68,26 +69,6 @@ export class AuthService{
         );
     }
 
-    logout(){
-        this.user.next(null);   //sets the user to Null
-        this.router.navigate(['/auth']);
-    }
-
-    private handAuthentication(email: string, userId: string, token: string, expiresIn: number){
-        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);  // returns a date object in milliseconds
-        const user = new User(
-            email,
-            userId ,
-            token,
-            expirationDate
-            );
-        this.user.next(user);    
-        
-        //Storing the User object in the local Storage
-        //look at the Application in the browser    
-        localStorage.setItem('userData', JSON.stringify(user));
-    }
-
     autoLogin(){                        //getItem Sysc method
         const userData: 
         {
@@ -108,16 +89,56 @@ export class AuthService{
             new Date(userData._tokenExpirationDate) 
         );
         
-        if(loadedUser.token){
+        if (loadedUser.token) {
             this.user.next(loadedUser);
+            const expirationDuration =
+              new Date(userData._tokenExpirationDate).getTime() -
+              new Date().getTime();
+            this.autoLogout(expirationDuration);
         }
-
+      
     }
+
+    logout(){
+        this.user.next(null);   //sets the user to Null
+        this.router.navigate(['/auth']);
+        localStorage.removeItem('userData');
+
+        if(this.tokenExpirationTimer){
+            clearTimeout(this.tokenExpirationTimer);
+        }
+        this.tokenExpirationTimer = null;
+    }
+
+    autoLogout(expirationDuration: number){
+        this.tokenExpirationTimer = setTimeout(() =>{
+            this.logout();
+        },expirationDuration)
+    }
+
+    private handAuthentication(email: string, userId: string, token: string, expiresIn: number){
+        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);  // returns a date object in milliseconds
+        const user = new User(
+            email,
+            userId ,
+            token,
+            expirationDate
+            );
+        this.user.next(user);    
+        
+        this.autoLogout(expiresIn * 1000);
+
+        //Storing the User object in the local Storage
+        //look at the Application in the browser    
+        localStorage.setItem('userData', JSON.stringify(user));
+    }
+
+
 
     private handleError(errorRes: HttpErrorResponse)
         {
-                let errorMessage = 'An unknown error has occured!';
-                if(!errorRes.error || !errorRes.error.error){
+         let errorMessage = 'An unknown error has occured!';
+         if(!errorRes.error || !errorRes.error.error){
             return throwError(errorMessage);
                 }
 
