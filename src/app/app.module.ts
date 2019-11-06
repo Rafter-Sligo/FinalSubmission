@@ -22,6 +22,7 @@ import { RegisterComponent } from './register/register.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
 
 
 
@@ -58,6 +59,12 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
   providers: [
     ShoppingListService,
     RecipeService,
-  ],  bootstrap: [AppComponent]
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],  
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
