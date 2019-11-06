@@ -10,13 +10,14 @@ import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component'
 import { RegisterComponent } from './register/register.component';
 import { RecipesResolverService } from './recipe/recipes-resolver.service';
 import { AuthComponent } from './auth/auth.component';
+import { AuthGaurd } from './auth/auth-gaurd';
 
 //The Routes
 const appRoutes: Routes = [
   //pathMatch will display went the path is empty
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGaurd] },
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'recipes', component: RecipeComponent, children:
+  { path: 'recipes', component: RecipeComponent, canActivate: [AuthGaurd], children:
     [
       { path: '', component: RecipeStartComponent },
       { path: 'new', component: RecipeEditComponent },
