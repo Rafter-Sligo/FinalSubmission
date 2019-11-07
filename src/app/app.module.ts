@@ -10,21 +10,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 
-import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
-import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-item.component';
-import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
-import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipe/recipe.service';
 import { RegisterComponent } from './register/register.component';
-import { RecipeComponent } from './recipe/recipe.component';
-import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
+import { RecipeModule } from './recipe/recipe.module';
 
 
 
@@ -33,15 +28,9 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
     AppComponent,
     HeaderComponent,
     ShoppingEditComponent,
-    RecipeListComponent,
-    RecipeItemComponent,
-    RecipeDetailComponent,
     DropdownDirective,
-    RecipeComponent,
-    RecipeEditComponent,
     RegisterComponent,
     AuthComponent,
-    RecipeStartComponent,
     ShoppingListComponent,
     LoadingSpinnerComponent,
     AlertComponent,
@@ -56,7 +45,8 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
     // AngularFireModule.initializeApp(environment.firebase),
     // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    HttpClientModule
+    HttpClientModule,
+    RecipeModule
 
 
   ],
