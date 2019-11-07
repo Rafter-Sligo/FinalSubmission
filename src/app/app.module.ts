@@ -23,6 +23,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { AlertComponent } from './shared/alert/alert.component';
 
 
 
@@ -41,7 +42,8 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     AuthComponent,
     RecipeStartComponent,
     ShoppingListComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AlertComponent
 
   ],
   imports: [
