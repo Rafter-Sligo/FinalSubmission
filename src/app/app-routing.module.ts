@@ -10,7 +10,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   //Lazy Loading  =>  reduces the file size when running it
   { path: 'recipes', loadChildren: () => import('./recipe/recipe.module').then(m => m.RecipeModule) }, 
-  { path: 'shoppinglist', loadChildren: () => import('./shopping-list/shopping-list.module').then(m => m.ShoppingListModule) }, 
+  { path: 'shopping-list', loadChildren: () => import('./shopping-list/shopping-list.module').then(m => m.ShoppingListModule) }, 
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) }, 
 
 ];
