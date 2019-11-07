@@ -8,22 +8,22 @@ import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.compo
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RecipesRoutingModule } from './recipe-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { RecipesRoutingModule } from './recipe-routing.module';
 
 //Feature Modules
 @NgModule({
     declarations: [
         RecipeComponent,
-        RecipeEditComponent,
         RecipeListComponent,
-        RecipeItemComponent,
         RecipeDetailComponent,
+        RecipeItemComponent,
         RecipeStartComponent,
+        RecipeEditComponent
     ],
     imports: [
-        RouterModule, 
-        ReactiveFormsModule, 
+        RouterModule,
+        ReactiveFormsModule,
         RecipesRoutingModule,
         SharedModule
     ]
