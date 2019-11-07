@@ -69,6 +69,10 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
       multi: true
     }
   ],  
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  //  entryComponents is an Array of component types (of components that are being created without a Selector or Route Content)
+  entryComponents: [
+    AlertComponent
+  ]
 })
 export class AppModule { }
