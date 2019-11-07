@@ -20,6 +20,8 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 import { RecipeModule } from './recipe/recipe.module';
+import { CoreModule } from './core.module';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -42,13 +44,14 @@ import { RecipeModule } from './recipe/recipe.module';
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    RecipeModule,
+    CoreModule,
+    SharedModule
+
     // AngularFireModule.initializeApp(environment.firebase),
     // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    HttpClientModule,
-    RecipeModule
-
-
   ],
   providers: [
     ShoppingListService,
