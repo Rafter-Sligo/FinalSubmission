@@ -24,6 +24,7 @@ import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.compone
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
+import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 
 
@@ -43,7 +44,8 @@ import { AlertComponent } from './shared/alert/alert.component';
     RecipeStartComponent,
     ShoppingListComponent,
     LoadingSpinnerComponent,
-    AlertComponent
+    AlertComponent,
+    PlaceholderDirective
 
   ],
   imports: [
