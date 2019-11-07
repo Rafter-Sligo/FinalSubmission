@@ -15,6 +15,12 @@ export class RecipeEditComponent implements OnInit {
   editMode = false;
   recipeForm: FormGroup;
 
+  //makes this more secure
+  get ingredientsControls(){
+    return (this.recipeForm.get('ingredients') as FormArray).controls;
+  }
+
+
   constructor(private route: ActivatedRoute,
               private recipeService: RecipeService,
               private router: Router,
