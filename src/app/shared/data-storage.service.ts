@@ -27,28 +27,23 @@ export class DataStorageService{
     }
 
     fetchRecipes(){
-         //exhaustMap     It waits for the First Obs to complete, it gives the user and then replaces to the inner Obs
-        return this.authService.user.pipe(take(1), exhaustMap(user =>{
             return this.http    //Switchs to a Http Obserbiable
             .get<Recipe[]>(
                 'https://recipe-75686.firebaseio.com/recipes.json', 
-                {
-                params: new HttpParams().set('auth',user.token)
-                }
-            );
 
-        }),map(recipes=>{
-            return recipes.map(recipe =>{
-                return {
-                    ...recipe,
-                     ingredients: recipe.ingredients ? recipe.ingredients : []
-                };
-            });
-        }),
-        tap(recipes =>{
-            this.recipeService.setRecipes(recipes);
-        }));
-
+            ).pipe(       
+                 map(recipes=>{
+                return recipes.map(recipe =>{
+                    return {
+                        ...recipe,
+                         ingredients: recipe.ingredients ? recipe.ingredients : []
+                    };
+                });
+            }),
+            tap(recipes =>{
+                this.recipeService.setRecipes(recipes);
+            }));
     }
-
+    
 }
+
