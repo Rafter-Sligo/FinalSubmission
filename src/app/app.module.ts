@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthComponent } from './auth/auth.component';
-
-import { AppRoutingModule } from './app-routing.module'; // Added here
-
+import { AppRoutingModule } from './app-routing.module'; 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
@@ -22,6 +20,7 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
 import { RecipeModule } from './recipe/recipe.module';
 import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 
 
@@ -47,7 +46,8 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     RecipeModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    ShoppingListModule
 
     // AngularFireModule.initializeApp(environment.firebase),
     // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
