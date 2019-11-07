@@ -6,10 +6,10 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipesRoutingModule } from './recipe-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 //Feature Modules
 @NgModule({
@@ -22,10 +22,10 @@ import { RecipesRoutingModule } from './recipe-routing.module';
         RecipeStartComponent,
     ],
     imports: [
-        CommonModule, 
         RouterModule, 
         ReactiveFormsModule, 
-        RecipesRoutingModule
+        RecipesRoutingModule,
+        SharedModule
     ]
 })
 export class RecipeModule{

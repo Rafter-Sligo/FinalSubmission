@@ -10,10 +10,9 @@ import { AuthGaurd } from './auth/auth-gaurd';
 const appRoutes: Routes = [
   //pathMatch will display went the path is empty
   { path: 'register', component: RegisterComponent, canActivate: [AuthGaurd] },
+  
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
 
-  { path: 'shopping-list', component: ShoppingListComponent },
-  { path: 'auth', component: AuthComponent}
 ];
 
 @NgModule({
