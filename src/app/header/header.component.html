@@ -11,7 +11,8 @@
       <ul class="nav navbar-nav">
         <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/recipes" >MyRecipes</a></li>
         <li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/auth">Authenticate</a></li>
-        <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/shopping-list">Shopping List</a></li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated" ><a routerLink="/newest-recipe">Latest Recipes</a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
