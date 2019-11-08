@@ -1,1 +1,6 @@
-<p>newest-recipe works!</p>
+<form >
+    <div >
+      <input type="text"  placeholder="Enter Meal Name" #recipeName>
+    </div>
+  <button class="ui button primary" (click)="getRecipeDetails(recipeName.value)" type="button">Submit</button>
+</form>
