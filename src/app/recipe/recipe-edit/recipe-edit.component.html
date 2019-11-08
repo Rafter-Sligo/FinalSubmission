@@ -83,11 +83,12 @@
           </div>
         </div>
       </div>
-      <button
-      type="submit"
-      class="btn btn-success"
-      [disabled]="!recipeForm.valid">Save</button>
-    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+
+    <button type="button" class="btn btn-danger pull-right" (click)="onCancel()">Cancel</button>
+    <button
+    type="submit"
+    class="btn btn-success pull-right"
+    [disabled]="!recipeForm.valid" style="margin-right: 2%;">Save</button>
     </form>
   </div>
 </div>  
