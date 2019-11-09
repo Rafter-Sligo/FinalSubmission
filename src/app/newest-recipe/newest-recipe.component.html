@@ -1,6 +1,15 @@
-<form >
-    <div >
-      <input type="text"  placeholder="Enter Meal Name" #recipeName>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<div class="row" style="margin-top: 5px;">
+    <div class="col-md-12">
+      <div class="body">
+        <div class="search-box">
+        <input type="text" name="" class="search-txt" (keyup)="getRecipeDetails(recipeName.value)" placeholder="Enter Meal Name" #recipeName/>
+        <a class="search-btn" >
+          <i class="fas fa-search"></i>
+        </a>
+      </div>
     </div>
-  <button class="ui button primary" (click)="getRecipeDetails(recipeName.value)" type="button">Submit</button>
-</form>
+  </div>
+</div>
+
