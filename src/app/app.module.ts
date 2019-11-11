@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
 import { NewestRecipeComponent } from './newest-recipe/newest-recipe.component';
+import { RegisterRedoneComponent } from './register-redone/register-redone.component';
+import { LoginRedoneComponent } from './login-redone/login-redone.component';
 
 
 
@@ -16,6 +18,8 @@ import { NewestRecipeComponent } from './newest-recipe/newest-recipe.component';
     AppComponent,
     HeaderComponent,
     NewestRecipeComponent,
+    RegisterRedoneComponent,
+    LoginRedoneComponent,
     //RegisterComponent, 
   ],
   imports: [
