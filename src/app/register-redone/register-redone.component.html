@@ -1,1 +1,49 @@
-<p>register-redone works!</p>
+<h1 class="header text-center">Create an account with Firebase or Social Providers</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form>
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" formControlName="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <label class="error">{{errorMessage}}</label>
+                    <label class="success">{{successMessage}}</label>
+                </div>
+                <button type="submit" (click)="tryRegister(registerForm.value)"
+                    class="btn btn-default">Register</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!--Social Login buttons
+    <div class="row top-buffer ">
+        <div class="col-md-8 col-md-offset-2 col-sm-8">
+            <button type="button" class="btn btn-primary btn-block btn-lg" (click)="tryFacebookLogin()">Register with
+                <b>Facebook</b></button>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="  col-md-8 col-md-offset-2 ">
+            <button type="button" class="btn btn-danger btn-block btn-lg " (click)="tryGoogleLogin()">Register with
+                <b>Google</b></button>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-8 col-md-offset-2">
+            <button type="button" class="btn btn-info btn-block btn-lg" (click)="tryTwitterLogin()">Register
+                with
+                <b>Twitter</b></button>
+        </div>
+    </div>
+-->
+    <div class="row">
+        <div class="col-md-8 col-md-offset-4">
+            <p><b>Already have an account?</b> <a href="/login"><b>Login</b></a></p>
+        </div>
+    </div>
+</div>
