@@ -7,7 +7,6 @@ import { HeaderComponent } from './header/header.component';
 
 import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
-import { LoggingService } from './logging.service';
 import { NewestRecipeComponent } from './newest-recipe/newest-recipe.component';
 
 

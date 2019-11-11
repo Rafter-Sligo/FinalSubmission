@@ -95,8 +95,7 @@ export class AuthService{
               new Date(userData._tokenExpirationDate).getTime() -
               new Date().getTime();
             this.autoLogout(expirationDuration);
-        }
-      
+        }  
     }
 
     logout(){
@@ -133,7 +132,6 @@ export class AuthService{
         //look at the Application in the browser    
         localStorage.setItem('userData', JSON.stringify(user));
     }
-
 
 
     private handleError(errorRes: HttpErrorResponse)

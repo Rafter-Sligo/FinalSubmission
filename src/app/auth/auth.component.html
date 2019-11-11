@@ -15,7 +15,7 @@
     </div>
     <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
       <div class="form-group">
-        <label for="email">E-Mail</label>
+        <label for="email">E-Mail <i style="color: red;">*</i></label>
         <input
           type="email"
           id="email"
@@ -28,7 +28,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Password <i style="color: red;">*</i></label>
         <input
           type="password"
           id="password"
@@ -39,6 +39,21 @@
           minlength="6"
           placeholder="Password..."
         />
+      </div>
+      <div class="form-group">
+        <div *ngIf="!isLoginMode">
+         <label for="password">Confim Password <i style="color: red;">*</i></label>
+          <input
+          type="password"
+          id="password"
+          class="form-control"
+          ngModel
+          name="password"
+          required
+          minlength="6"
+          placeholder="Password..." 
+          />
+        </div>
       </div>
       <div>
         <button
