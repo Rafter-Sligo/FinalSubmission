@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -29,6 +30,7 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onAddToShoppingList() {
+    swal("Recipe added", "Recipe added to shopping list sucessfully!", "success");
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
   }
 
@@ -38,7 +40,7 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onDeleteRecipe() {
-    alert("Recipe Deleted")
+    swal("Recipe deleted!", "Recipe deleted sucessfully!", "success");
     this.recipeService.deleteRecipe(this.id);
     this.router.navigate(['/recipes']);
   }

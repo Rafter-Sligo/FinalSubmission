@@ -1,0 +1,15 @@
+.navcolour{
+    background-color: lightskyblue;
+}
+
+/* navbar */
+.navbar-default {
+    background-color: lightskyblue !important;
+    border-color: black !important;
+}
+
+.navbar-custom { background-color: red !important; }
+
+.navbar-custom { 
+    background-color: lightgreen; 
+} 

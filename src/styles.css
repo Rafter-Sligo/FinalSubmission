@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+.Loginheader{
+    font-family:verdana;
+    font-weight:bold;
+    margin-bottom: 10px;
+    font-size: 40px;
+}
+
+.space{
+    margin-top: 10px;
+    
+}
+
+.colour{
+    color: black;
+}
+
+/*nav bar colour*/
+.navbar-custom {
+    background-color: lightskyblue;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:focus .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: green;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color:black;
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+}
+
+a { color: #FF0000; }

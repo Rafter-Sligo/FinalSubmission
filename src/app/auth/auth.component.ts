@@ -14,16 +14,16 @@ import { PlaceholderDirective } from '../shared/placeholder/placeholder.directiv
 export class AuthComponent implements OnDestroy {
   isLoginMode = true;
   isLoading = false;
-  error:string = null;  //error Messages
-  @ViewChild(PlaceholderDirective, {static: false}) alertHost: PlaceholderDirective;
+  error: string = null;  //error Messages
+  @ViewChild(PlaceholderDirective, { static: false }) alertHost: PlaceholderDirective;
 
   private closeSub: Subscription;
 
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private router: Router,
     private componentFactoryResolver: ComponentFactoryResolver
-    ){
+  ) {
 
   }
 
@@ -32,47 +32,47 @@ export class AuthComponent implements OnDestroy {
   }
 
   onSubmit(form: NgForm) {
-    if(!form.valid){
+    if (!form.valid) {
       return;   //incase someone changes browser tools to mske button enabled
     }
     const email = form.value.email;
     const password = form.value.password;
 
+
+
     this.isLoading = true
 
     let authObs: Observable<AuthResponseData>;
 
-    if(this.isLoginMode){
-     authObs = this.authService.login(email,password)
-    } 
-    else
-    {
-     authObs = this.authService.signUp(email,password)
+    if (this.isLoginMode) {
+      authObs = this.authService.login(email, password)
+    }
+    else {
+      authObs = this.authService.signUp(email, password)
     }
 
     authObs.subscribe(
       resData => {
-      console.log(resData);
-      this.isLoading = false;
-      this.router.navigate(['/recipes']);
-   },
-   errorMessage =>
-     {
-       this.error = errorMessage;
-       this.showErrorAlert(errorMessage);
-       this.isLoading = false;
-     });
+        console.log(resData);
+        this.isLoading = false;
+        this.router.navigate(['/recipes']);
+      },
+      errorMessage => {
+        this.error = errorMessage;
+        this.showErrorAlert(errorMessage);
+        this.isLoading = false;
+      });
 
 
     form.reset();
   }
 
-  onHandleError(){
+  onHandleError() {
     this.error = null;
   }
 
-  ngOnDestroy(){
-    if(this.closeSub){
+  ngOnDestroy() {
+    if (this.closeSub) {
       this.closeSub.unsubscribe();
     }
   }
