@@ -9,44 +9,21 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /*  background: #2f3640;   */
+    /* background: #2f3640; */
     height: 40px;
     border-radius: 40px;
     padding: 10px;
-}
-
-.square {
-    height: 50px;
-    width: 50px;
-    border-radius: 30px;
-    background-color: #555;
-    transition: width 0.2s ease-in-out;
-    position: relative;
-    padding: 50px
-  }
-
-  input{
-    position: absolute;
-      width: 100%;
-  }
-
-  .square:hover{
-      width: 350px;
-  }
+   }
    
-.search-box:hover > .search-txt {
+   .search-box:hover > .search-txt {
     width: 240px;
     padding: 0 6px;
-}
+   }
    
-.search-box:hover > .search-btn {
-    color: white;
-    background: #2f3640; 
-    width: 250px;
-    height: 50px;
-    transition: all 0.2s ease-in-out;
-
-}
+   .search-box:hover > .search-btn {
+    background: white;
+    color: black;
+   }
    
 .search-btn {
     float: right;
