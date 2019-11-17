@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { NewestRecipeComponent } from './newest-recipe/newest-recipe.component';
 import { RegisterRedoneComponent } from './register-redone/register-redone.component';
 import { LoginRedoneComponent } from './login-redone/login-redone.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 
@@ -20,6 +21,7 @@ import { LoginRedoneComponent } from './login-redone/login-redone.component';
     NewestRecipeComponent,
     RegisterRedoneComponent,
     LoginRedoneComponent,
+    ContactUsComponent,
     //RegisterComponent, 
   ],
   imports: [

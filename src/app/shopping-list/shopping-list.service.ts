@@ -27,7 +27,8 @@ export class ShoppingListService {
       // for (let ingredient of ingredients) {
       //   this.addIngredient(ingredient);
       // }
-      this.ingredients.push(...ingredients);
+      this.ingredients.push(...ingredients);  
+      // Spread Opertations is an object and the receiver is an object too, then the key-value pairs are copied together instead of just values
       this.ingredientsChanged.next(this.ingredients.slice());
     }
   

@@ -27,18 +27,27 @@ export class AuthComponent implements OnDestroy {
 
   }
 
+  //Switching between Login and Signup
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
 
   onSubmit(form: NgForm) {
     if (!form.valid) {
-      return;   //incase someone changes browser tools to mske button enabled
+      return;   //incase someone changes browser tools to make button enabled
     }
+
+    //Pulling Values from the Form
     const email = form.value.email;
     const password = form.value.password;
+    const passwords = form.value.passwords;
 
-
+    //Checking if the passwords are not the same
+    //need to have page loaded to false or no one can login
+    if(this.isLoading = false && password != passwords){
+      console.log('password wrong');
+      return;
+    }
 
     this.isLoading = true
 
@@ -55,16 +64,16 @@ export class AuthComponent implements OnDestroy {
       resData => {
         console.log(resData);
         this.isLoading = false;
-        this.router.navigate(['/recipes']);
+        this.router.navigate(['/recipes']); // if sucessfull go to recipes
       },
       errorMessage => {
         this.error = errorMessage;
-        this.showErrorAlert(errorMessage);
+        this.showErrorAlert(errorMessage);  // if failure send an error message
         this.isLoading = false;
       });
 
 
-    form.reset();
+    form.reset(); // resets the form
   }
 
   onHandleError() {

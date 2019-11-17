@@ -13,8 +13,9 @@ export interface AuthResponseData{
     expiresIn:string;
     localId:string;
     registered?: boolean;   // this is a optional variable, Cause only Login needs it 
+                            //every variable is assumed to be required by the function, it can’t be given null or undefined
+                            //
 }
-
 @Injectable({providedIn:'root'})
 export class AuthService{
     //this is like a subject the difference also gives subscribers imitate access to the pervious value
@@ -27,8 +28,9 @@ export class AuthService{
     //Firebase Auth Rest Api
     // those are out keys
     signUp(email: string, password: string){
+        // http is used becuase we are requesting data 
         return this.http
-        .post<AuthResponseData>(
+        .post<AuthResponseData>( //AuthResponseData is an Interface
             'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBpmikPJo5GAAgveRNMXZwRFzz5qLtD3No',
             {
                 email: email,
@@ -47,7 +49,6 @@ export class AuthService{
         );
     }
 
-
     login(email:string, password:string)
     {
         return this.http.post<AuthResponseData>(
@@ -63,7 +64,7 @@ export class AuthService{
                 resData.email,
                 resData.localId,
                 resData.idToken,
-                +resData.expiresIn
+                +resData.expiresIn  // the + makes it a number
                 );
         })
         );
@@ -76,7 +77,7 @@ export class AuthService{
             id: string;
             _token: string;
             _tokenExpirationDate: string;
-        } = JSON.parse(localStorage.getItem('userData'));
+        } = JSON.parse(localStorage.getItem('userData'));   // storing in the local storgae
 
         if(!userData){
             return;
@@ -101,16 +102,18 @@ export class AuthService{
     logout(){
         this.user.next(null);   //sets the user to Null
         this.router.navigate(['/auth']);
-        localStorage.removeItem('userData');
+        localStorage.removeItem('userData');    // removes the users data from the local stoage
 
+        //sets the token to be expired
         if(this.tokenExpirationTimer){
-            clearTimeout(this.tokenExpirationTimer);
+            clearTimeout(this.tokenExpirationTimer);    //The clearTimeout() method clears a timer set with the setTimeout() method
         }
-        this.tokenExpirationTimer = null;
+        this.tokenExpirationTimer = null;   //setting it to be null for next time logging in
     }
 
     autoLogout(expirationDuration: number){
         console.log("how long Left (milsec): " + expirationDuration)
+        //How long a user hase before they are logged out
         this.tokenExpirationTimer = setTimeout(() =>{
             this.logout();
         },expirationDuration)
@@ -139,8 +142,7 @@ export class AuthService{
          let errorMessage = 'An unknown error has occured!';
          if(!errorRes.error || !errorRes.error.error){
             return throwError(errorMessage);
-                }
-
+            }   // Switch for existing problems for signup/login
             switch(errorRes.error.error.message)  {
              case 'EMAIL_EXISTS':
                     errorMessage = 'This email exists already.';

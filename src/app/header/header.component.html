@@ -18,12 +18,17 @@
             routerLink="/shopping-list">Shopping List</a></li>
         <li routerLinkActive="active" *ngIf="isAuthenticated"><a class="navbar-brand" routerLink="/newest-recipe">Latest
             Recipes</a></li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated"><a class="navbar-brand" routerLink="/contact-us">
+            Contact US</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="isAuthenticated">
           <a style="cursor: pointer;" class="navbar-brand" (click)="onLogout()">Logout</a>
         </li>
+
+        <!-- Dropdown Directive being used here -->
+
         <li class="dropdown" appDropdown *ngIf="isAuthenticated">
           <a style="cursor: pointer;" class="dropdown-toggle navbar-brand" role="button">Manage <span class="caret"></span></a>
           <ul class="dropdown-menu">
