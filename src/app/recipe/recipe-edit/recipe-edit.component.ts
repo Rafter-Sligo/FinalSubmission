@@ -28,13 +28,14 @@ export class RecipeEditComponent implements OnInit {
               ) {
   }
 
+  //when the page is loaded
   ngOnInit() {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.id = +params['id'];
-          this.editMode = params['id'] != null;
-          this.initForm();
+          this.id = +params['id'];  //retreiveing ID in parameter
+          this.editMode = params['id'] != null; //when the parameters change.  Does it have an ID
+          this.initForm(); //calling private method
         }
       );
   }
@@ -74,19 +75,24 @@ export class RecipeEditComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
-  private initForm() {
-    let recipeName = '';
+  private initForm() { 
+    let recipeName = '';  // setting it a empty string
     let recipeImagePath = '';
     let recipeDescription = '';
-    let recipeIngredients = new FormArray([]);
+    let recipeIngredients = new FormArray([]);  // cause there could be multiple
 
+    //if we are in the edit mode
     if (this.editMode) {
-      const recipe = this.recipeService.getRecipe(this.id);
-      recipeName = recipe.name;
+      const recipe = this.recipeService.getRecipe(this.id); //gets the Id of the recipe that is beig edited
+      recipeName = recipe.name; //value of the recipe from the service
       recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
+
+      // recipe has ingredients 
       if (recipe['ingredients']) {
-        for (let ingredient of recipe.ingredients) {
+        //have to loop incase there is multiple
+        for (let ingredient of recipe.ingredients) {  
+          //push them on the recipeIngredients Form Group to the Form Array
           recipeIngredients.push(
             new FormGroup({
               'name': new FormControl(ingredient.name, Validators.required),
@@ -101,6 +107,7 @@ export class RecipeEditComponent implements OnInit {
     }
 
     this.recipeForm = new FormGroup({
+      //  'name'  = whats its named in the HTML Code
       'name': new FormControl(recipeName, Validators.required),
       'imagePath': new FormControl(recipeImagePath, Validators.required),
       'description': new FormControl(recipeDescription, Validators.required),

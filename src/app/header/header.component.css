@@ -5,7 +5,6 @@
 /* navbar */
 .navbar-default {
     background-color: lightskyblue !important;
-    border-color: black !important;
 }
 
 .navbar-custom { background-color: red !important; }
@@ -13,3 +12,12 @@
 .navbar-custom { 
     background-color: lightgreen; 
 } 
+
+.navbar-toggle{
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+}
+.navbar-toggle .icon-bar {
+    background-color: #fff;
+}

@@ -3,7 +3,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
-import swal from 'sweetalert';
+//import { swal } from 'bootstrap-sweetalert'
+
+import swal from 'sweetalert'; // npm install sweetalert --save
+//export as namespace swal;  <-- comment out cause it conflicts with Bootstrap
 
 @Component({
   selector: 'app-recipe-detail',
@@ -41,6 +44,24 @@ export class RecipeDetailComponent implements OnInit {
 
   onDeleteRecipe() {
     swal("Recipe deleted!", "Recipe deleted sucessfully!", "success");
+  
+  // swal({
+  //   title: "Are you sure?",
+  //   text: "Once deleted, you will not be able to recover this imaginary file!",
+  //   icon: "warning",
+  //   buttons: true,
+  //   dangerMode: true,
+  // })
+  // .then((willDelete) => {
+  //   if (willDelete) {
+  //     swal("Poof! Your imaginary file has been deleted!", {
+  //       icon: "success",
+  //     });
+  //   } else {
+  //     swal("Your imaginary file is safe!");
+  //   }
+  // });
+
     this.recipeService.deleteRecipe(this.id);
     this.router.navigate(['/recipes']);
   }

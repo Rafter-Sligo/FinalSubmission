@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AuthGaurd } from './auth/auth-gaurd';
 import { NewestRecipeComponent } from './newest-recipe/newest-recipe.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 //The Routes
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   { path: 'shopping-list', loadChildren: () => import('./shopping-list/shopping-list.module').then(m => m.ShoppingListModule) }, 
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) }, 
   { path: 'newest-recipe', component: NewestRecipeComponent, canActivate: [AuthGaurd] },
+  { path: 'contact-us', component: ContactUsComponent, canActivate: [AuthGaurd] },
 
 ];
 
@@ -25,6 +27,5 @@ const appRoutes: Routes = [
 })
 export class AppRoutingModule {
   //This will Bundle all the routing
-
 }
 

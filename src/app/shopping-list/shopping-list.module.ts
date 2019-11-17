@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ShoppingListComponent } from './shopping-list.component';
 import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 import { SharedModule } from '../shared/shared.module';
-import { LoggingService } from '../logging.service';
+import { AuthGaurd } from '../auth/auth-gaurd';
 
 @NgModule({
   declarations: 
@@ -17,7 +17,7 @@ import { LoggingService } from '../logging.service';
   [
     FormsModule,
     RouterModule.forChild([
-      { path: '', component: ShoppingListComponent }
+      { path: '', component: ShoppingListComponent, canActivate: [AuthGaurd]  }
     ]),
     SharedModule
   ],
