@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { NewestRecipeComponent } from './newest-recipe/newest-recipe.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
-      
+    CoreModule,
+    BrowserAnimationsModule  
     // AngularFireModule.initializeApp(environment.firebase),
     // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
