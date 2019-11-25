@@ -8,10 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
 import { NewestRecipeComponent } from './newest-recipe/newest-recipe.component';
-import { RegisterRedoneComponent } from './register-redone/register-redone.component';
-import { LoginRedoneComponent } from './login-redone/login-redone.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-
 
 
 @NgModule({
@@ -19,8 +16,6 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     AppComponent,
     HeaderComponent,
     NewestRecipeComponent,
-    RegisterRedoneComponent,
-    LoginRedoneComponent,
     ContactUsComponent,
     //RegisterComponent, 
   ],
