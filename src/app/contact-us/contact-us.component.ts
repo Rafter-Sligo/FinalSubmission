@@ -12,4 +12,7 @@ export class ContactUsComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+    console.log('hello');
+  }
 }
