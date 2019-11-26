@@ -7,7 +7,6 @@ import { trigger, style, transition, animate, keyframes, query, stagger } from '
   styleUrls: ['./contact-us.component.css'],
   animations: [
 
-
     // having a delay between the input box's   ==  sexy 
     trigger('explainerAnim', [
       transition('* => *',[
