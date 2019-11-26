@@ -7,6 +7,7 @@ import { trigger, style, transition, animate, keyframes, query, stagger, state }
 
 
 import swal from 'sweetalert'; // npm install sweetalert --save
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 //export as namespace swal;  <-- comment out cause it conflicts with Bootstrap
 
 @Component({
@@ -32,7 +33,8 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(private recipeService: RecipeService,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private dataStorage: DataStorageService) {
   }
 
   ngOnInit() {
@@ -77,5 +79,7 @@ export class RecipeDetailComponent implements OnInit {
 
     this.recipeService.deleteRecipe(this.id);
     this.router.navigate(['/recipes']);
+    this.dataStorage.storeRecipes();
+
   }
 }
