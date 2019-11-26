@@ -3,15 +3,29 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
-//import { swal } from 'bootstrap-sweetalert'
+import { trigger, style, transition, animate, keyframes, query, stagger, state } from '@angular/animations';
+
 
 import swal from 'sweetalert'; // npm install sweetalert --save
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 //export as namespace swal;  <-- comment out cause it conflicts with Bootstrap
 
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.css']
+  styleUrls: ['./recipe-detail.component.css'],
+  animations: [ 
+
+    //fade in for the drop down
+    trigger('fadeIn', [
+      // when it goes from void to default
+      transition('void => *' , [
+        style( { opacity: 0 } ),
+        animate(2000, style( { opacity: 1 } ))  // applies over a period of time
+      ])
+    ])
+
+  ]
 })
 export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
@@ -19,7 +33,8 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(private recipeService: RecipeService,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private dataStorage: DataStorageService) {
   }
 
   ngOnInit() {
@@ -64,5 +79,7 @@ export class RecipeDetailComponent implements OnInit {
 
     this.recipeService.deleteRecipe(this.id);
     this.router.navigate(['/recipes']);
+    this.dataStorage.storeRecipes();
+
   }
 }

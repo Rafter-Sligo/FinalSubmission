@@ -44,8 +44,8 @@ export class AuthComponent implements OnDestroy {
 
     //Checking if the passwords are not the same
     //need to have page loaded to false or no one can login
-    if(this.isLoading = false && password != passwords){
-      console.log('password wrong');
+    if(this.isLoginMode == false && password != passwords){
+      alert('passwords dont mathc');
       return;
     }
 
