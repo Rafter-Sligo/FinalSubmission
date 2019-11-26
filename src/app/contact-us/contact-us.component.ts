@@ -13,7 +13,7 @@ import { trigger, style, transition, animate, keyframes, query, stagger } from '
         query('.form-control', style({ opacity: 0 , transform: 'translateX(-40px)' })),
 
         query('.form-control', stagger('500ms', [
-          animate('800ms 1.2s ease-out', style( { opacity: 1 , transform: 'translateX(0)'} ))
+          animate('300ms 1.2s ease-out', style( { opacity: 1 , transform: 'translateX(0)'} ))
         ])),
       ])
 

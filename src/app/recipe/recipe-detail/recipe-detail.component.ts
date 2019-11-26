@@ -21,7 +21,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
       // when it goes from void to default
       transition('void => *' , [
         style( { opacity: 0 } ),
-        animate(2000, style( { opacity: 1 } ))  // applies over a period of time
+        animate(1000, style( { opacity: 1 } ))  // applies over a period of time
       ])
     ])
 
