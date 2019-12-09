@@ -17,7 +17,9 @@
     <div class="col-md-12"> 
         <div class="row" >
             <div class="col-md-12" id="new-Recipe"> 
-               <p>Nice</p>
+              <p></p>
+              <div *ngIf="recipeData"> title: {{ recipeData.meals.strMeal }}</div> 
+              
             </div>
         </div>
     </div>

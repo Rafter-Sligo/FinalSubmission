@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, tap} from 'rxjs/operators';
 import { NewRecipe } from './newest-recipe.model';
 
@@ -29,5 +29,4 @@ export class NewRecipeService {
     console.log('OmdbApiService: '+ err.message);
     return Observable.throw(err.message);
   }
-
 }

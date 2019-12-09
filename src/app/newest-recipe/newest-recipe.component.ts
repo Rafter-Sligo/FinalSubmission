@@ -23,6 +23,7 @@ export class NewestRecipeComponent implements OnInit {
 
   getRecipeDetails(recipeName: string):boolean{
     this.newRecipeService.getRecipeData(recipeName).subscribe(Data =>{
+      console.log('got data')
       this.recipeData = Data;
     },
 
